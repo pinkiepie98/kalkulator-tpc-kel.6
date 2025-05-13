@@ -58,7 +58,7 @@ fakta_list = [
     "🧪 TPC sering digunakan dalam pengujian produk susu, air, dan makanan olahan.",
     "🌡️ Suhu penyimpanan yang tepat dapat memperlambat pertumbuhan bakteri.",
 ]
-    
+
 # Halaman: Home
 if menu == "Home":
     st.markdown('<div class="main">', unsafe_allow_html=True)
