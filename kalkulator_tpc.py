@@ -33,7 +33,7 @@ st.markdown("""
         font-size: 16px;
         font-family: 'Calibri', 'Segoe UI', sans-serif;
     }
-     .fakta-seru {
+    .fakta-seru {
         position: fixed;
         bottom: 10px;
         left: 10px;
@@ -48,7 +48,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Fakta Seru yang akan ditampilkan di halaman Home
+# Fakta Seru
 fakta_list = [
     "🧫 Bakteri bisa bereproduksi dalam hitungan menit!",
     "🔬 TPC digunakan untuk mengukur keamanan pangan.",
@@ -59,21 +59,20 @@ fakta_list = [
     "🌡️ Suhu penyimpanan yang tepat dapat memperlambat pertumbuhan bakteri.",
 ]
 
+# Pilih satu fakta acak
+fakta_acak = random.choice(fakta_list)
+
 # Halaman: Home
 if menu == "Home":
     st.markdown('<div class="main">', unsafe_allow_html=True)
     st.markdown('<h1 class="title">🧫 Welcome To Calculator TPC 🦠</h1>', unsafe_allow_html=True)
     st.write("Website ini membantu menghitung **Total Plate Count (TPC)** atau jumlah koloni bakteri per mL sampel cair. Gunakan menu di atas untuk mulai.")
-    
-    # Tempatkan fakta seru bergulir otomatis di kiri bawah
-    placeholder = st.empty()
-    for i in range(100):  # akan loop cukup lama
-        current_fact = fakta_list[i % len(fakta_list)]
-        placeholder.markdown(f'<div class="fakta-seru">{current_fact}</div>', unsafe_allow_html=True)
-        time.sleep(4)
+
+    # Tampilkan satu fakta acak di kiri bawah
+    st.markdown(f'<div class="fakta-seru"><strong>Fakta Seru:</strong><br>{fakta_acak}</div>', unsafe_allow_html=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
-        
+
 # Halaman: Kalkulator Total Plate Count
 elif menu == "Kalkulator Total Plate Count":
     st.markdown('<div class="main">', unsafe_allow_html=True)
