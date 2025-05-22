@@ -65,32 +65,6 @@ if menu == "Home":
     st.markdown('<div class="main">', unsafe_allow_html=True)
     st.markdown('<h1 class="title">🧫 Welcome To Calculator TPC 🦠</h1>', unsafe_allow_html=True)
     st.write("Website ini membantu menghitung **Total Plate Count (TPC)** atau jumlah koloni bakteri per mL sampel cair. Gunakan menu di atas untuk mulai.")
-
-    st.markdown("---")
-    st.subheader("📚 Apa Itu TPC?")
-    st.markdown("""
-    **Total Plate Count (TPC)** adalah metode untuk menghitung jumlah total bakteri hidup dalam suatu sampel. Pengujian ini penting untuk menilai kebersihan, kualitas, dan keamanan produk pangan atau air minum.
-
-    Dalam industri pangan, TPC digunakan sebagai indikator:
-    - Efektivitas proses sanitasi dan sterilisasi
-    - Kualitas bahan baku dan produk akhir
-    - Stabilitas penyimpanan produk
-
-    Semakin tinggi nilai TPC, semakin besar potensi kontaminasi mikroba yang bisa membahayakan kesehatan konsumen dan menurunkan umur simpan produk.
-    """)
-
-    st.subheader("🔍 Kenapa Pengujian Mikrobiologi Itu Penting?")
-    st.markdown("""
-    Pengujian mikrobiologi sangat penting untuk:
-    - **Melindungi konsumen** dari keracunan makanan
-    - **Menjaga reputasi produsen**
-    - **Memenuhi standar mutu & regulasi pangan**
-    - **Mencegah kerugian ekonomi akibat produk rusak atau ditarik dari pasar**
-
-    Oleh karena itu, pengujian seperti TPC sangat krusial dalam setiap tahapan produksi pangan, mulai dari bahan baku hingga distribusi.
-    """)
-    st.markdown("---")
-
     st.markdown(f'<div class="fakta-seru"><strong>Fakta Seru:</strong><br>{fakta_acak}</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
