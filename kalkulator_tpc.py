@@ -58,8 +58,6 @@ fakta_list = [
     "🧪 TPC sering digunakan dalam pengujian produk susu, air, dan makanan olahan.",
     "🌡️ Suhu penyimpanan yang tepat dapat memperlambat pertumbuhan bakteri.",
 ]
-
-# Pilih satu fakta acak
 fakta_acak = random.choice(fakta_list)
 
 # Halaman: Home
@@ -68,9 +66,32 @@ if menu == "Home":
     st.markdown('<h1 class="title">🧫 Welcome To Calculator TPC 🦠</h1>', unsafe_allow_html=True)
     st.write("Website ini membantu menghitung **Total Plate Count (TPC)** atau jumlah koloni bakteri per mL sampel cair. Gunakan menu di atas untuk mulai.")
 
-    # Tampilkan satu fakta acak di kiri bawah
-    st.markdown(f'<div class="fakta-seru"><strong>Fakta Seru:</strong><br>{fakta_acak}</div>', unsafe_allow_html=True)
+    st.markdown("---")
+    st.subheader("📚 Apa Itu TPC?")
+    st.markdown("""
+    **Total Plate Count (TPC)** adalah metode untuk menghitung jumlah total bakteri hidup dalam suatu sampel. Pengujian ini penting untuk menilai kebersihan, kualitas, dan keamanan produk pangan atau air minum.
 
+    Dalam industri pangan, TPC digunakan sebagai indikator:
+    - Efektivitas proses sanitasi dan sterilisasi
+    - Kualitas bahan baku dan produk akhir
+    - Stabilitas penyimpanan produk
+
+    Semakin tinggi nilai TPC, semakin besar potensi kontaminasi mikroba yang bisa membahayakan kesehatan konsumen dan menurunkan umur simpan produk.
+    """)
+
+    st.subheader("🔍 Kenapa Pengujian Mikrobiologi Itu Penting?")
+    st.markdown("""
+    Pengujian mikrobiologi sangat penting untuk:
+    - **Melindungi konsumen** dari keracunan makanan
+    - **Menjaga reputasi produsen**
+    - **Memenuhi standar mutu & regulasi pangan**
+    - **Mencegah kerugian ekonomi akibat produk rusak atau ditarik dari pasar**
+
+    Oleh karena itu, pengujian seperti TPC sangat krusial dalam setiap tahapan produksi pangan, mulai dari bahan baku hingga distribusi.
+    """)
+    st.markdown("---")
+
+    st.markdown(f'<div class="fakta-seru"><strong>Fakta Seru:</strong><br>{fakta_acak}</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 # Halaman: Kalkulator Total Plate Count
@@ -82,25 +103,27 @@ elif menu == "Kalkulator Total Plate Count":
 
     st.subheader("🔬 Data Pengenceran 1")
     koloni_1a = st.number_input("Jumlah koloni cawan 1 - Simplo:", min_value=0, step=1, key="koloni_1a")
-    koloni_1b = st.number_input("Jumlah koloni cawan 1 - Duplo:", min_value=0, step=1, key="koloni_1b")
+    koloni_1b = st.number_input("Jumlah koloni cawan 1 - Duplo (opsional):", min_value=0, step=1, key="koloni_1b")
+    koloni_1c = st.number_input("Jumlah koloni cawan 1 - Triplo (opsional):", min_value=0, step=1, key="koloni_1c")
     pengenceran_1 = st.number_input("Faktor pengenceran cawan 1 (misal 10⁻³ → isi 1000):", min_value=1, step=1, key="pengenceran_1")
 
     st.subheader("🔬 Data Pengenceran 2")
     koloni_2a = st.number_input("Jumlah koloni cawan 2 - Simplo:", min_value=0, step=1, key="koloni_2a")
-    koloni_2b = st.number_input("Jumlah koloni cawan 2 - Duplo:", min_value=0, step=1, key="koloni_2b")
+    koloni_2b = st.number_input("Jumlah koloni cawan 2 - Duplo (opsional):", min_value=0, step=1, key="koloni_2b")
+    koloni_2c = st.number_input("Jumlah koloni cawan 2 - Triplo (opsional):", min_value=0, step=1, key="koloni_2c")
     pengenceran_2 = st.number_input("Faktor pengenceran cawan 2 (misal 10⁻³ → isi 1000):", min_value=1, step=1, key="pengenceran_2")
 
     if st.button("Hitung TPC"):
-        rata_1 = (koloni_1a + koloni_1b) / 2
-        rata_2 = (koloni_2a + koloni_2b) / 2
+        koloni_list_1 = [k for k in [koloni_1a, koloni_1b, koloni_1c] if k > 0]
+        rata_1 = koloni_1a if koloni_1b == 0 and koloni_1c == 0 else sum(koloni_list_1) / len(koloni_list_1)
+
+        koloni_list_2 = [k for k in [koloni_2a, koloni_2b, koloni_2c] if k > 0]
+        rata_2 = koloni_2a if koloni_2b == 0 and koloni_2c == 0 else sum(koloni_list_2) / len(koloni_list_2)
 
         tpc1 = rata_1 / pengenceran_1
         tpc2 = rata_2 / pengenceran_2
-
         rata_rata_tpc = (tpc1 + tpc2) / 2
 
-        st.write(f"📍 Rata-rata koloni cawan 1: {rata_1:.2f}")
-        st.write(f"📍 Rata-rata koloni cawan 2: {rata_2:.2f}")
         st.write(f"✅ TPC dari cawan 1: **{tpc1:.4f} CFU/mL**")
         st.write(f"✅ TPC dari cawan 2: **{tpc2:.4f} CFU/mL**")
         st.success(f"🔢 Rata-rata Total Plate Count (TPC): **{rata_rata_tpc:.4f} CFU/mL**")
