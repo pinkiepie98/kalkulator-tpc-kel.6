@@ -82,7 +82,7 @@ if menu == "Home":
     st.subheader("🔍 Kenapa Pengujian Mikrobiologi Itu Penting?")
     st.markdown("""
     Pengujian mikrobiologi sangat penting untuk:
-    - **Melindungi konsumen** dari keracunan makanan
+    - **Melindungi konsumen dari keracunan makanan**
     - **Menjaga reputasi produsen**
     - **Memenuhi standar mutu & regulasi pangan**
     - **Mencegah kerugian ekonomi akibat produk rusak atau ditarik dari pasar**
